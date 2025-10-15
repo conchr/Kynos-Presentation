@@ -100,8 +100,14 @@
             text-align: center;
             border-top: 1px solid #e2e8f0;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 1rem;
         }
         .btn {
             display: inline-flex;
@@ -109,13 +115,14 @@
             gap: 0.5rem;
             background-color: #f59e0b;
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
             cursor: pointer;
             border: none;
+            font-size: 0.9rem;
         }
         .btn:hover {
             background-color: #d97706;
@@ -142,6 +149,7 @@
             border-radius: 3px;
             margin: 0.5rem 0 1rem;
             overflow: hidden;
+            width: 100%;
         }
         .progress {
             height: 100%;
@@ -153,7 +161,7 @@
             text-align: center;
             font-size: 0.9rem;
             color: #64748b;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         .keyboard-hint {
             text-align: center;
@@ -165,6 +173,15 @@
             height: 2px;
             background: linear-gradient(to right, transparent, #f59e0b, transparent);
             margin: 2rem 0;
+        }
+        .municipality-label {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         @keyframes fadeIn {
@@ -180,8 +197,11 @@
             .page-header h2 { font-size: 1.25rem; }
             .thank-you-page h1 { font-size: 1.75rem; }
             .navigation-footer {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 1rem;
+            }
+            .municipality-label {
+                top: 0.5rem;
+                left: 1rem;
             }
         }
     </style>
@@ -189,16 +209,9 @@
 <body>
 
     <div class="presentation-container">
-        <!-- Progress Bar -->
-        <div class="page-indicator">
-            <span id="currentPage">1</span> / <span id="totalPages">15</span>
-        </div>
-        <div class="progress-bar">
-            <div id="progress" class="progress" style="width: 6.66%"></div>
-        </div>
-
         <!-- Page 1 -->
         <div id="page-1" class="page active">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-header">
                 <h1>ΚΥΝΟΣ ΚΕΦΑΛΑΙ (197 π.Χ.)</h1>
                 <h2>Η ΜΑΧΗ ΠΟΥ ΑΛΛΑΞΕ ΤΟΝ ΚΟΣΜΟ</h2>
@@ -213,6 +226,7 @@
 
         <!-- Page 2 -->
         <div id="page-2" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
              <div class="page-header">
                 <h3>Εισαγωγή</h3>
             </div>
@@ -225,6 +239,7 @@
         
         <!-- Page 3 -->
         <div id="page-3" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Οι Πρωταγωνιστές και οι Δυνάμεις</h3>
                  <ul>
@@ -244,6 +259,7 @@
         
         <!-- Page 4 -->
         <div id="page-4" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
              <div class="page-content">
                 <h3>Οι Έλληνες Σύμμαχοι</h3>
                 <p>Ο Φλαμινίνος είχε κρίσιμους Έλληνες συμμάχους, με κυριότερη την Αιτωλική Συμπολιτεία. Οι Ρωμαίοι χρησιμοποίησαν το σύνθημα της «απελευθέρωσης» της Ελλάδας από τον μακεδονικό ζυγό, μετατρέποντας μια μάχη για την κυριαρχία σε αγώνα για την «ελευθερία».</p>
@@ -254,6 +270,7 @@
         
         <!-- Page 5 -->
         <div id="page-5" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
              <div class="page-content">
                 <h3>Στρατιωτικά Δόγματα: Η Φάλαγγα</h3>
                 <ul>
@@ -274,6 +291,7 @@
         
         <!-- Page 6 -->
         <div id="page-6" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
              <div class="page-content">
                 <h3>Στρατιωτικά Δόγματα: Η Λεγεώνα</h3>
                 <ul>
@@ -292,6 +310,7 @@
         
         <!-- Page 7 -->
         <div id="page-7" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
              <div class="page-content">
                 <h3>Η Αρχή της Μάχης: Το Χάος της Ομίχλης</h3>
                 <p>Η μάχη (197 π.Χ.) έλαβε χώρα στους λοφίσκους των Κυνός Κεφαλών, ένα απόλυτα ακατάλληλο έδαφος για τη φάλαγγα.</p>
@@ -304,6 +323,7 @@
 
         <!-- Page 8 -->
         <div id="page-8" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Η Πρώτη Φάση: Η Μακεδονική Επιτυχία</h3>
                 <p>Ο Φίλιππος κατάφερε να παρατάξει εγκαίρως το δεξί κέρας του στρατού του (περίπου 8.000 άνδρες). Αυτή η σχηματισμένη φάλαγγα εφόρμησε και απώθησε με σφοδρότητα τη ρωμαϊκή αριστερή πτέρυγα. Οι Ρωμαίοι υπέστησαν σοβαρό πλήγμα, με εκτιμώμενες απώλειες περίπου 700 ανδρών κατά την αρχική μετωπική επαφή.</p>
@@ -314,6 +334,7 @@
         
         <!-- Page 9 -->
         <div id="page-9" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Η Ανατροπή: Ο Ελιγμός του Χιλιάρχου</h3>
                 <p>Ο Φλαμινίνος εκμεταλλεύτηκε την καθυστέρηση του μακεδονικού αριστερού κέρους, το οποίο δεν είχε σχηματίσει πλήρη παράταξη. Η επίθεση των πολεμικών ελεφάντων διέλυσε αυτό το άτακτο τμήμα.</p>
@@ -326,6 +347,7 @@
         
         <!-- Page 10 -->
         <div id="page-10" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Η Κατάρρευση της Φάλαγγας</h3>
                 <p>Η μακεδονική φάλαγγα δέχεται την επίθεση από τα νώτα. Η δομική της ακαμψία την καθιστά ανίκανη να αντιδράσει ή να στρίψει γρήγορα τις σάρισσες. Η ευέλικτη λεγεώνα, σε μικρές ομάδες, εισχωρεί στα κενά που δημιούργησε το ανώμαλο έδαφος, επιφέροντας μαζικές απώλειες.</p>
@@ -338,6 +360,7 @@
         
         <!-- Page 11 -->
         <div id="page-11" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Οι Απώλειες</h3>
                 <ul>
@@ -353,6 +376,7 @@
         
         <!-- Page 12 -->
         <div id="page-12" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Η Πολιτική Κληρονομιά</h3>
                 <ul>
@@ -370,6 +394,7 @@
 
         <!-- Page 13 -->
         <div id="page-13" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Εγκαθίδρυση Ρωμαϊκής Κυριαρχίας</h3>
                 <p>Το σημαντικότερο πολιτικό επακόλουθο ήταν η διακήρυξη από τον Φλαμινίνο της «ελευθερίας των Ελλήνων» το 196 π.Χ. Αυτή η διακήρυξη λειτούργησε ως διπλωματικό εργαλείο.</p>
@@ -382,6 +407,7 @@
         
         <!-- Page 14 -->
         <div id="page-14" class="page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <div class="page-content">
                 <h3>Συμπέρασμα: Το Τέλος μιας Εποχής</h3>
                 <p>Η Μάχη των Κυνός Κεφαλών είναι το αναμφισβήτητο ορόσημο που σηματοδότησε:</p>
@@ -397,6 +423,7 @@
 
         <!-- Final Page -->
         <div id="page-15" class="page thank-you-page">
+            <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ</div>
             <h1>Σας ευχαριστούμε που παρακολουθήσατε αυτή την παρουσίαση</h1>
             <div class="quiz-button-container">
                 <a href="https://conchr.github.io/Kynos/" target="_blank" class="btn">
@@ -410,12 +437,20 @@
 
         <!-- Navigation -->
         <div class="navigation-footer">
-            <button id="prevBtn" class="btn">
-                <i class="fas fa-arrow-left"></i> Προηγούμενη
-            </button>
-            <button id="nextBtn" class="btn">
-                Επόμενη <i class="fas fa-arrow-right"></i>
-            </button>
+            <div class="nav-buttons">
+                <button id="prevBtn" class="btn">
+                    <i class="fas fa-arrow-left"></i> Προηγούμενη
+                </button>
+                <button id="nextBtn" class="btn">
+                    Επόμενη <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="page-indicator">
+                <span id="currentPage">1</span> / <span id="totalPages">15</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress" class="progress" style="width: 6.66%"></div>
+            </div>
         </div>
     </div>
 
