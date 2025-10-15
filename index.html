@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Η Μάχη των Κυνός Κεφαλών (197 π.Χ.)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .presentation-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #fcf8e8;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .page {
+            display: none;
+            padding: 2.5rem;
+            animation: fadeIn 0.7s ease-in-out;
+            min-height: 500px;
+        }
+        .page.active {
+            display: block;
+        }
+        #page-1 {
+            position: relative;
+            background: linear-gradient(rgba(252, 248, 232, 0.8), rgba(252, 248, 232, 0.8)), 
+                        url('https://images.unsplash.com/photo-1589561454220-0c8b2d1c6f5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .page-header img {
+            max-width: 150px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            border: 3px solid #f59e0b;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .page-header h2 {
+            font-size: 1.5rem;
+            color: #475569;
+            font-weight: 700;
+        }
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .page-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: #92400e;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #fcd34d;
+            padding-bottom: 0.5rem;
+        }
+        .page-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .page-content li {
+            background-color: #f8fafc;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 4px;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .page-content li::before {
+            content: "•";
+            color: #f59e0b;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0.75rem;
+            top: 0.5rem;
+        }
+        .page-content .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #fcd34d;
+        }
+        .navigation-footer {
+            padding: 1.5rem 2.5rem;
+            background-color: #f8fafc;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #f59e0b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        .btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .thank-you-page h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            color: #3b82f6;
+        }
+        .quiz-button-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .progress-bar {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            margin: 0.5rem 0 1rem;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #f59e0b;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .page-indicator {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .keyboard-hint {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            body { padding: 0.5rem; }
+            .page { padding: 1.5rem; }
+            .page-header h1 { font-size: 2rem; }
+            .page-header h2 { font-size: 1.25rem; }
+            .thank-you-page h1 { font-size: 1.75rem; }
+            .navigation-footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- Progress Bar -->
+        <div class="page-indicator">
+            <span id="currentPage">1</span> / <span id="totalPages">15</span>
+        </div>
+        <div class="progress-bar">
+            <div id="progress" class="progress" style="width: 6.66%"></div>
+        </div>
+
+        <!-- Page 1 -->
+        <div id="page-1" class="page active">
+            <div class="page-header">
+                <h1>ΚΥΝΟΣ ΚΕΦΑΛΑΙ (197 π.Χ.)</h1>
+                <h2>Η ΜΑΧΗ ΠΟΥ ΑΛΛΑΞΕ ΤΟΝ ΚΟΣΜΟ</h2>
+            </div>
+            <div class="page-content text-center mt-8">
+                <p>Μια παρουσίαση για τη μάχη που άλλαξε την ιστορία της Μεσογείου</p>
+            </div>
+            <div class="keyboard-hint">
+                <i class="fas fa-info-circle"></i> Χρησιμοποιήστε τα βέλη για πλοήγηση
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div id="page-2" class="page">
+             <div class="page-header">
+                 <img src="https://images.unsplash.com/photo-1597838816882-4435b1977fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Έμβλημα Δήμου Φαρσάλων">
+                <h3>Εισαγωγή</h3>
+            </div>
+            <div class="page-content">
+                <p>Θα ταξιδέψουμε πίσω στο 197 π.Χ., στη Θεσσαλία, για να παρακολουθήσουμε μια σύγκρουση που δεν ήταν απλώς μια στρατιωτική νίκη—ήταν η στιγμή που ο ελληνιστικός κόσμος, ο κόσμος του Μεγάλου Αλεξάνδρου, συνάντησε το μέλλον του: τη Ρώμη.</p>
+                <p class="mt-4">Η Μάχη των Κυνός Κεφαλών δεν ήταν απλώς μια μάχη. Ήταν η τελική μονομαχία ανάμεσα σε δύο στρατιωτικά δόγματα, τη Φάλαγγα και τη Λεγεώνα. Και η έκβασή της καθόρισε ποιος θα κυβερνούσε τη Μεσόγειο για τους επόμενους αιώνες.</p>
+            </div>
+        </div>
+        
+        <!-- Page 3 -->
+        <div id="page-3" class="page">
+            <div class="page-content">
+                <h3>Οι Πρωταγωνιστές και οι Δυνάμεις</h3>
+                 <ul>
+                    <li>
+                        <strong>Η Μακεδονία (Βασιλιάς Φίλιππος Ε'):</strong> Ο τελευταίος μεγάλος κληρονόμος της δυναστείας των Αντιγονιδών.
+                        <br><strong>Δύναμη:</strong> Περίπου 25.500 άνδρες.
+                        <br><strong>Καρδιά του Στρατού:</strong> Η πανίσχυρη Μακεδονική Φάλαγγα (16.000 φαλαγγίτες).
+                    </li>
+                    <li>
+                        <strong>Η Ρωμαϊκή Δημοκρατία (Ύπατος Τίτος Κουίνκτιος Φλαμινίνος):</strong> Μια ανερχόμενη δύναμη, έτοιμη να κυριαρχήσει στην Ανατολή.
+                        <br><strong>Δύναμη:</strong> Περίπου 34.000 άνδρες, χάρη στους Έλληνες συμμάχους.
+                        <br><strong>Στρατηγικό Πλεονέκτημα:</strong> Η ευέλικτη Ρωμαϊκή Λεγεώνα και μονάδες πολεμικών ελεφάντων.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Page 4 -->
+        <div id="page-4" class="page">
+             <div class="page-content">
+                <h3>Οι Έλληνες Σύμμαχοι</h3>
+                <p>Ο Φλαμινίνος είχε κρίσιμους Έλληνες συμμάχους, με κυριότερη την Αιτωλική Συμπολιτεία. Οι Ρωμαίοι χρησιμοποίησαν το σύνθημα της «απελευθέρωσης» της Ελλάδας από τον μακεδονικό ζυγό, μετατρέποντας μια μάχη για την κυριαρχία σε αγώνα για την «ελευθερία».</p>
+                <img src="https://images.unsplash.com/photo-1593081891731-fda5a645f1e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Αρχαίοι Έλληνες πολεμιστές" class="content-image">
+            </div>
+        </div>
+        
+        <!-- Page 5 -->
+        <div id="page-5" class="page">
+             <div class="page-content">
+                <h3>Στρατιωτικά Δόγματα: Η Φάλαγγα</h3>
+                <ul>
+                    <li>
+                        <strong>Στόχος:</strong> Μετωπική συντριβή.
+                    </li>
+                     <li>
+                        <strong>Πλεονέκτημα:</strong> Σε επίπεδο έδαφος, οι 16.000 φαλαγγίτες με τις 6 μέτρων σάρισσες ήταν ένα αδιαπέραστο τείχος, ικανό να συντρίψει οποιαδήποτε μετωπική επίθεση.
+                    </li>
+                     <li>
+                        <strong>Μειονέκτημα:</strong> Απόλυτη ακαμψία. Δεν μπορούσε να στρίψει, να ανασυνταχθεί ή να αμυνθεί αν δεχόταν επίθεση από τα πλάγια ή αν επιχειρούσε σε ανώμαλο έδαφος.
+                    </li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Αναπαράσταση μακεδονικής φάλαγγας" class="content-image">
+            </div>
+        </div>
+        
+        <!-- Page 6 -->
+        <div id="page-6" class="page">
+             <div class="page-content">
+                <h3>Στρατιωτικά Δόγματα: Η Λεγεώνα</h3>
+                <ul>
+                    <li>
+                        <strong>Στόχος:</strong> Ευκινησία και ελιγμοί.
+                    </li>
+                     <li>
+                        <strong>Πλεονέκτημα:</strong> Η οργάνωση σε μικρές σπείρες (manipulae) επέτρεπε στη λεγεώνα να προσαρμόζεται στο έδαφος και να εκμεταλλεύεται κενά. Ήταν σχεδιασμένη για πολυδιάστατη μάχη.
+                    </li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Αναπαράσταση ρωμαϊκής λεγεώνας" class="content-image">
+            </div>
+        </div>
+        
+        <!-- Page 7 -->
+        <div id="page-7" class="page">
+             <div class="page-content">
+                <h3>Η Αρχή της Μάχης: Το Χάος της Ομίχλης</h3>
+                <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Αναπαράσταση της μάχης" class="content-image">
+                <p>Η μάχη (197 π.Χ.) έλαβε χώρα στους λοφίσκους των Κυνός Κεφαλών, ένα απόλυτα ακατάλληλο έδαφος για τη φάλαγγα.</p>
+                <p class="mt-4">Η μάχη ξεκίνησε τυχαία, καθώς ένα τμήμα του ρωμαϊκού ιππικού συναντήθηκε με τις μακεδονικές εμπροσθοφυλακές μέσα σε πυκνή ομίχλη και σε λοφώδες έδαφος.</p>
+            </div>
+        </div>
+
+        <!-- Page 8 -->
+        <div id="page-8" class="page">
+            <div class="page-content">
+                <h3>Η Πρώτη Φάση: Η Μακεδονική Επιτυχία</h3>
+                <p>Ο Φίλιππος κατάφερε να παρατάξει εγκαίρως το δεξί κέρας του στρατού του (περίπου 8.000 άνδρες). Αυτή η σχηματισμένη φάλαγγα εφόρμησε και απώθησε με σφοδρότητα τη ρωμαϊκή αριστερή πτέρυγα. Οι Ρωμαίοι υπέστησαν σοβαρό πλήγμα, με εκτιμώμενες απώλειες περίπου 700 ανδρών κατά την αρχική μετωπική επαφή.</p>
+            </div>
+        </div>
+        
+        <!-- Page 9 -->
+        <div id="page-9" class="page">
+            <div class="page-content">
+                <h3>Η Ανατροπή: Ο Ελιγμός του Χιλιάρχου</h3>
+                <p>Ο Φλαμινίνος εκμεταλλεύτηκε την καθυστέρηση του μακεδονικού αριστερού κέρους, το οποίο δεν είχε σχηματίσει πλήρη παράταξη. Η επίθεση των πολεμικών ελεφάντων διέλυσε αυτό το άτακτο τμήμα.</p>
+                <p class="mt-4">Εκείνη την κρίσιμη στιγμή, ένας ανώνυμος Ρωμαίος χιλίαρχος πήρε μια απόφαση ζωής ή θανάτου. Αντί να ακολουθήσει την καταδίωξη, έστρεψε 20 ρωμαϊκές σπείρες (manipulae) και επιτέθηκε αιφνιδιαστικά στα νώτα του νικηφόρου μακεδονικού δεξιού κέρους.</p>
+            </div>
+        </div>
+        
+        <!-- Page 10 -->
+        <div id="page-10" class="page">
+            <div class="page-content">
+                <h3>Η Κατάρρευση της Φάλαγγας</h3>
+                <p>Η μακεδονική φάλαγγα δέχεται την επίθεση από τα νώτα. Η δομική της ακαμψία την καθιστά ανίκανη να αντιδράσει ή να στρίψει γρήγορα τις σάρισσες. Η ευέλικτη λεγεώνα, σε μικρές ομάδες, εισχωρεί στα κενά που δημιούργησε το ανώμαλο έδαφος, επιφέροντας μαζικές απώλειες.</p>
+                <p class="mt-4">Η μάχη μετατράπηκε σε σφαγή. Η δομική υπεροχή της λεγεώνας στο ανώμαλο έδαφος επισφραγίστηκε από την πρωτοβουλία του χιλιάρχου.</p>
+            </div>
+        </div>
+        
+        <!-- Page 11 -->
+        <div id="page-11" class="page">
+            <div class="page-content">
+                <h3>Οι Απώλειες</h3>
+                <ul>
+                    <li><strong>Μακεδονικό Βασίλειο:</strong> 5.000 νεκροί.</li>
+                    <li><strong>Ρωμαϊκή Δημοκρατία:</strong> 2.000 νεκροί.</li>
+                </ul>
+                <p class="mt-4">Η τεράστια διαφορά στις απώλειες οφείλεται στο ότι μόλις η φάλαγγα διασπάστηκε και κύκλωθηκε, οι φαλαγγίτες ήταν ανυπεράσπιστοι.</p>
+            </div>
+        </div>
+        
+        <!-- Page 12 -->
+        <div id="page-12" class="page">
+            <div class="page-content">
+                <h3>Η Πολιτική Κληρονομιά</h3>
+                <ul>
+                    <li>
+                        <strong>Ήττα του Φιλίππου:</strong> Ο Φίλιππος Ε' αναγκάστηκε να συνθηκολογήσει, παραδίδοντας μεγάλο μέρος της δύναμής του.
+                    </li>
+                    <li>
+                        <strong>Η «Ελευθερία» των Ελλήνων:</strong> Ο Φλαμινίνος διακήρυξε το 196 π.Χ. την «ελευθερία των Ελλήνων». Αυτή η διακήρυξη, αν και φαινομενικά γενναιόδωρη, ήταν το διπλωματικό προκάλυμμα για την έναρξη της ρωμαϊκής επικυριαρχίας στην Ελλάδα.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Page 13 -->
+        <div id="page-13" class="page">
+            <div class="page-content">
+                <h3>Εγκαθίδρυση Ρωμαϊκής Κυριαρχίας</h3>
+                <p>Το σημαντικότερο πολιτικό επακόλουθο ήταν η διακήρυξη από τον Φλαμινίνο της «ελευθερίας των Ελλήνων» το 196 π.Χ. Αυτή η διακήρυξη λειτούργησε ως διπλωματικό εργαλείο.</p>
+                <p class="mt-4">Ενώ φαινομενικά τερμάτιζε τη μακεδονική ηγεμονία, στην πραγματικότητα εγκαθίδρυε τη ρωμαϊκή επικυριαρχία. Η Ρώμη άρχισε τη σταδιακή υποταγή της Ελλάδας, αποφεύγοντας την άμεση προσάρτηση, αλλά διατηρώντας την πολιτική και στρατιωτική της επιρροή μέσω της «ελεγχόμενης ελευθερίας».</p>
+            </div>
+        </div>
+        
+        <!-- Page 14 -->
+        <div id="page-14" class="page">
+            <div class="page-content">
+                <h3>Συμπέρασμα: Το Τέλος μιας Εποχής</h3>
+                <p>Η Μάχη των Κυνός Κεφαλών είναι το αναμφισβήτητο ορόσημο που σηματοδότησε:</p>
+                <ul>
+                    <li><strong>Το Τέλος της Φάλαγγας:</strong> Η ευέλικτη λεγεώνα αποδείχθηκε ανώτερη.</li>
+                    <li><strong>Το Τέλος της Μακεδονικής Ηγεμονίας:</strong> Άνοιξε τον δρόμο για την οριστική υποταγή της Ελλάδας.</li>
+                    <li><strong>Η Ανατολή της Αυτοκρατορίας:</strong> Η Ρώμη μετατράπηκε σε κυρίαρχο ηγεμόνα της Μεσογείου.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Final Page -->
+        <div id="page-15" class="page thank-you-page">
+            <h1>Σας ευχαριστούμε που παρακολουθήσατε αυτή την παρουσίαση</h1>
+            <div class="quiz-button-container">
+                <a href="https://conchr.github.io/Kynos/" target="_blank" class="btn">
+                    <i class="fas fa-question-circle"></i> Θέλετε να κάνετε το κουίζ γνώσεων;
+                </a>
+            </div>
+            <div class="keyboard-hint">
+                <i class="fas fa-info-circle"></i> Πατήστε το βέλος αριστερά για να επιστρέψετε στην αρχή
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation-footer">
+            <button id="prevBtn" class="btn">
+                <i class="fas fa-arrow-left"></i> Προηγούμενη
+            </button>
+            <button id="nextBtn" class="btn">
+                Επόμενη <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for navigation
+        let currentPageIndex = 1;
+        const totalPages = 15;
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prevBtn');
+        const nextButton = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progress');
+        const currentPageSpan = document.getElementById('currentPage');
+        const totalPagesSpan = document.getElementById('totalPages');
+
+        // Initialize total pages indicator
+        totalPagesSpan.textContent = totalPages;
+
+        function updateProgress() {
+            const progressPercentage = (currentPageIndex / totalPages) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            currentPageSpan.textContent = currentPageIndex;
+        }
+
+        function showPage(index) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show the target page
+            const targetPage = document.getElementById(`page-${index}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update navigation buttons
+            prevButton.disabled = index === 1;
+            nextButton.disabled = index === totalPages;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function nextPage() {
+            if (currentPageIndex < totalPages) {
+                currentPageIndex++;
+                showPage(currentPageIndex);
+            }
+        }
+
+        function prevPage() {
+            if (currentPageIndex > 1) {
+                currentPageIndex--;
+                showPage(currentPageIndex);
+            }
+        }
+
+        // Event listeners for buttons
+        prevButton.addEventListener('click', prevPage);
+        nextButton.addEventListener('click', nextPage);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextPage();
+            } else if (e.key === 'ArrowLeft') {
+                prevPage();
+            } else if (e.key === 'Home') {
+                currentPageIndex = 1;
+                showPage(currentPageIndex);
+            } else if (e.key === 'End') {
+                currentPageIndex = totalPages;
+                showPage(currentPageIndex);
+            }
+        });
+
+        // Initially show the first page
+        showPage(currentPageIndex);
+    </script>
+
+</body>
+</html>
