@@ -10,20 +10,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #3b82f6;
+            --accent-color: #92400e;
+            --light-bg: #fcf8e8;
+            --dark-text: #1e293b;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f0f4f8;
-            color: #1e293b;
+            color: var(--dark-text);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 1rem;
+            margin: 0;
         }
         .presentation-container {
             width: 100%;
-            max-width: 900px;
-            background-color: #fcf8e8;
+            max-width: 1200px;
+            background-color: var(--light-bg);
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -34,13 +47,13 @@
             padding: 2.5rem;
             animation: fadeIn 0.7s ease-in-out;
             min-height: 500px;
+            position: relative;
         }
         .page.active {
             display: block;
         }
         #page-1 {
-            position: relative;
-            background-color: #fcf8e8;
+            background-color: var(--light-bg);
         }
         .page-header {
             text-align: center;
@@ -51,7 +64,7 @@
         .page-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: #92400e;
+            color: var(--accent-color);
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
@@ -67,7 +80,7 @@
         .page-content h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.75rem;
-            color: #92400e;
+            color: var(--accent-color);
             margin-top: 2rem;
             margin-bottom: 1rem;
             border-bottom: 2px solid #fcd34d;
@@ -79,7 +92,7 @@
         }
         .page-content li {
             background-color: #f8fafc;
-            border-left: 4px solid #f59e0b;
+            border-left: 4px solid var(--primary-color);
             padding: 1rem;
             margin-bottom: 0.75rem;
             border-radius: 4px;
@@ -88,7 +101,7 @@
         }
         .page-content li::before {
             content: "•";
-            color: #f59e0b;
+            color: var(--primary-color);
             font-size: 1.5rem;
             position: absolute;
             left: 0.75rem;
@@ -113,7 +126,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #f59e0b;
+            background-color: var(--primary-color);
             color: white;
             padding: 0.6rem 1.2rem;
             border-radius: 8px;
@@ -133,11 +146,23 @@
             cursor: not-allowed;
             transform: none;
         }
+        .btn-home {
+            background-color: var(--secondary-color);
+            margin-top: 0;
+        }
+        .btn-home:hover {
+            background-color: #2563eb;
+        }
+        .home-button-container {
+            text-align: center;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
         .thank-you-page h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             text-align: center;
-            color: #3b82f6;
+            color: var(--secondary-color);
         }
         .quiz-button-container {
             text-align: center;
@@ -153,7 +178,7 @@
         }
         .progress {
             height: 100%;
-            background-color: #f59e0b;
+            background-color: var(--primary-color);
             border-radius: 3px;
             transition: width 0.3s ease;
         }
@@ -171,7 +196,7 @@
         }
         .divider {
             height: 2px;
-            background: linear-gradient(to right, transparent, #f59e0b, transparent);
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
             margin: 2rem 0;
         }
         .municipality-label {
@@ -189,19 +214,111 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Responsive Design */
-        @media (max-width: 640px) {
-            body { padding: 0.5rem; }
-            .page { padding: 1.5rem; }
-            .page-header h1 { font-size: 2rem; }
-            .page-header h2 { font-size: 1.25rem; }
-            .thank-you-page h1 { font-size: 1.75rem; }
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            body { 
+                padding: 0.5rem; 
+                align-items: flex-start;
+                min-height: auto;
+            }
+            .presentation-container {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+            .page { 
+                padding: 1.5rem;
+                min-height: auto;
+            }
+            .page-header h1 { 
+                font-size: 1.8rem; 
+                line-height: 1.2;
+            }
+            .page-header h2 { 
+                font-size: 1.2rem; 
+            }
+            .page-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .page-content h3 {
+                font-size: 1.4rem;
+            }
+            .page-content li {
+                padding: 0.8rem;
+                padding-left: 2.2rem;
+            }
             .navigation-footer {
                 padding: 1rem;
             }
             .municipality-label {
                 top: 0.5rem;
                 left: 1rem;
+                font-size: 0.75rem;
+            }
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Smart TV Optimization */
+        @media (min-width: 1200px) {
+            body {
+                padding: 2rem;
+            }
+            .presentation-container {
+                max-width: 1400px;
+            }
+            .page {
+                padding: 3rem;
+                min-height: 700px;
+            }
+            .page-header h1 {
+                font-size: 3.5rem;
+            }
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            .page-content {
+                font-size: 1.4rem;
+                line-height: 1.8;
+            }
+            .page-content h3 {
+                font-size: 2.2rem;
+            }
+            .page-content li {
+                padding: 1.2rem;
+                padding-left: 3rem;
+                margin-bottom: 1rem;
+            }
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                border-radius: 12px;
+            }
+            .municipality-label {
+                font-size: 1.1rem;
+                top: 1.5rem;
+                left: 2rem;
+            }
+            .navigation-footer {
+                padding: 2rem 3rem;
+            }
+            .page-indicator {
+                font-size: 1.1rem;
+            }
+            .keyboard-hint {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ultra-wide screens */
+        @media (min-width: 1600px) {
+            .presentation-container {
+                max-width: 1600px;
+            }
+            .page {
+                padding: 4rem;
             }
         }
     </style>
@@ -445,6 +562,13 @@
                     Επόμενη <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
+            
+            <div class="home-button-container">
+                <a href="https://conchr.github.io/Farsala-Center-Page/" class="btn btn-home">
+                    <i class="fas fa-home"></i> Επιστροφή στην Κεντρική Σελίδα
+                </a>
+            </div>
+            
             <div class="page-indicator">
                 <span id="currentPage">1</span> / <span id="totalPages">15</span>
             </div>
