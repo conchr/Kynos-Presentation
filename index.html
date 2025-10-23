@@ -32,32 +32,39 @@
             min-height: 100vh;
             padding: 1rem;
             margin: 0;
+            overflow: hidden;
         }
         .presentation-container {
             width: 100%;
             max-width: 1200px;
+            height: 95vh;
             background-color: var(--light-bg);
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .page {
             display: none;
-            padding: 2.5rem;
+            padding: 2rem;
             animation: fadeIn 0.7s ease-in-out;
-            min-height: 500px;
+            flex: 1;
+            overflow-y: auto;
             position: relative;
         }
         .page.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
         #page-1 {
             background-color: var(--light-bg);
+            justify-content: center;
         }
         .page-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
         }
@@ -77,12 +84,15 @@
         .page-content {
             font-size: 1.1rem;
             line-height: 1.8;
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 1rem;
         }
         .page-content h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.75rem;
             color: var(--accent-color);
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
             border-bottom: 2px solid #fcd34d;
             padding-bottom: 0.5rem;
@@ -109,13 +119,14 @@
             top: 0.5rem;
         }
         .navigation-footer {
-            padding: 1.5rem 2.5rem;
+            padding: 1rem 2rem;
             background-color: #f8fafc;
             text-align: center;
             border-top: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            flex-shrink: 0;
         }
         .nav-buttons {
             display: flex;
@@ -167,7 +178,7 @@
         }
         .quiz-button-container {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         .progress-bar {
             height: 6px;
@@ -198,7 +209,7 @@
         .divider {
             height: 2px;
             background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
         .municipality-label {
             position: absolute;
@@ -216,6 +227,8 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             margin: 0 auto 1.5rem;
             display: block;
+            max-height: 40vh;
+            object-fit: contain;
         }
 
         @keyframes fadeIn {
@@ -228,15 +241,15 @@
             body { 
                 padding: 0.5rem; 
                 align-items: flex-start;
-                min-height: auto;
+                min-height: 100vh;
             }
             .presentation-container {
                 max-width: 100%;
                 border-radius: 8px;
+                height: 98vh;
             }
             .page { 
-                padding: 1.5rem;
-                min-height: auto;
+                padding: 1rem;
             }
             .page-header h1 { 
                 font-size: 1.8rem; 
@@ -257,7 +270,7 @@
                 padding-left: 2.2rem;
             }
             .navigation-footer {
-                padding: 1rem;
+                padding: 0.8rem;
             }
             .municipality-label {
                 top: 0.5rem;
@@ -267,6 +280,50 @@
             .btn {
                 padding: 0.5rem 1rem;
                 font-size: 0.85rem;
+            }
+            .battle-image {
+                max-height: 30vh;
+            }
+        }
+        
+        /* Landscape Optimization */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .presentation-container {
+                height: 98vh;
+            }
+            .page {
+                padding: 1rem;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+            .page-header h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            .page-content {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            .page-content h3 {
+                font-size: 1.3rem;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            .page-content li {
+                padding: 0.6rem;
+                padding-left: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            .divider {
+                margin: 1rem 0;
+            }
+            .battle-image {
+                max-height: 25vh;
+            }
+            .navigation-footer {
+                padding: 0.5rem 1rem;
             }
         }
         
@@ -279,45 +336,44 @@
                 max-width: 1400px;
             }
             .page {
-                padding: 3rem;
-                min-height: 700px;
+                padding: 2.5rem;
             }
             .page-header h1 {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             .page-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .page-content {
-                font-size: 1.4rem;
-                line-height: 1.8;
+                font-size: 1.3rem;
+                line-height: 1.7;
             }
             .page-content h3 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .page-content li {
-                padding: 1.2rem;
-                padding-left: 3rem;
-                margin-bottom: 1rem;
+                padding: 1rem;
+                padding-left: 2.8rem;
+                margin-bottom: 0.8rem;
             }
             .btn {
-                padding: 1rem 2rem;
-                font-size: 1.2rem;
-                border-radius: 12px;
+                padding: 0.8rem 1.5rem;
+                font-size: 1.1rem;
+                border-radius: 10px;
             }
             .municipality-label {
-                font-size: 1.1rem;
-                top: 1.5rem;
+                font-size: 1rem;
+                top: 1.2rem;
                 left: 2rem;
             }
             .navigation-footer {
-                padding: 2rem 3rem;
+                padding: 1.5rem 2.5rem;
             }
             .page-indicator {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .keyboard-hint {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -327,14 +383,38 @@
                 max-width: 1600px;
             }
             .page {
-                padding: 4rem;
+                padding: 3rem;
             }
+        }
+        
+        /* Scrollbar styling */
+        .page-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .page-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .page-content::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        .page-content::-webkit-scrollbar-thumb:hover {
+            background: #d97706;
         }
     </style>
 </head>
 <body>
 
     <div class="presentation-container">
+        <!-- Progress Bar -->
+        <div class="page-indicator">
+            <span id="currentPage">1</span> / <span id="totalPages">15</span>
+        </div>
+        <div class="progress-bar">
+            <div id="progress" class="progress" style="width: 6.66%"></div>
+        </div>
+
         <!-- Page 1 -->
         <div id="page-1" class="page active">
             <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ 2025</div>
@@ -343,7 +423,7 @@
                 <h2>Η ΜΑΧΗ ΠΟΥ ΑΛΛΑΞΕ ΤΟΝ ΚΟΣΜΟ</h2>
                 <img src="https://github.com/conchr/Kynos-Presentation/blob/main/%5BArtistly%20Design%5D%200199e217-23f7-7165-b43c-c32e1dd9e47b.png?raw=true" alt="Μάχη Κυνός Κεφαλών" class="battle-image">
             </div>
-            <div class="page-content text-center mt-8">
+            <div class="page-content text-center">
                 <p>Μια παρουσίαση για τη μάχη που άλλαξε την ιστορία της Μεσογείου</p>
             </div>
             <div class="keyboard-hint">
@@ -551,11 +631,13 @@
         <!-- Final Page -->
         <div id="page-15" class="page thank-you-page">
             <div class="municipality-label">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ 2025</div>
-            <h1>Σας ευχαριστούμε που παρακολουθήσατε αυτή την παρουσίαση</h1>
-            <div class="quiz-button-container">
-                <a href="https://conchr.github.io/Kynos/" target="_blank" class="btn">
-                    <i class="fas fa-question-circle"></i> Θέλετε να κάνετε το κουίζ γνώσεων;
-                </a>
+            <div class="page-content">
+                <h1>Σας ευχαριστούμε που παρακολουθήσατε αυτή την παρουσίαση</h1>
+                <div class="quiz-button-container">
+                    <a href="https://conchr.github.io/Kynos/" class="btn">
+                        <i class="fas fa-question-circle"></i> Θέλετε να κάνετε το κουίζ γνώσεων;
+                    </a>
+                </div>
             </div>
             <div class="keyboard-hint">
                 <i class="fas fa-info-circle"></i> Πατήστε το βέλος αριστερά για να επιστρέψετε στην αρχή
